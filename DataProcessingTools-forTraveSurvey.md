@@ -63,4 +63,57 @@ This guide outlines the complete workflow and tools required to prepare and anal
 ```python
 combined = pd.concat([hts2000, hts2014, hts2019])
 combined.to_parquet("hts_trip_super.parquet")
+,,,
+
+---
+### 5. Derive Analysis Units
+Unit	Method	Weight
+Trip	Use hts_trip_super.parquet as-is	TRIP_WEIGHT
+Person	groupby(HHID, PID, YEAR) + summary	PERSON_WEIGHT
+Household	groupby(HHID, YEAR) + summary	HH_WEIGHT
+Zone	groupby(TAZ_ID, YEAR) + weighted means	Sum of HH/pop weights
+
+---
+
+### 6. Prepare for DiD Estimation
+python
+Copy
+Edit
+df["POST"] = (df["YEAR"] >= 2014).astype(int)
+df["DID"] = df["TREAT_FLAG"] * df["POST"]
+Cluster: TAZ_ID, HHID
+
+Plot trends: mode share, travel time, car ownership
+
+Optional: use staggered DiD (Sun & Abraham or Callaway & Sant’Anna)
+
+---
+
+**Output Checklist**
+Output	Format
+Cleaned yearly files	.parquet or .csv
+Merged trip-level superfile	hts_trip_super.parquet
+Aggregated person/household panels	.csv
+TAZ-level summaries	.csv
+DiD-ready panel	.csv, .dta, or .parquet
+Plots, maps	.png, .pdf
+Scripts	.py, .R, .ipynb, .do
+Documentation	README.md, .md, .pdf
+
+---
+
+### Tips
+- Prefer .parquet for large files.
+- Use GitHub for code + documentation version control.
+- Keep metadata for each variable in a .json or .md file.
+- Use fixest::feols or did::att_gt for robust DiD estimation in R.
+
+---
+
+### References
+- Callaway & Sant’Anna (2021) [Stata: csdid, R: did]
+- Sun & Abraham (2021) [Staggered DiD]
+- Scott Cunningham, Causal Inference: The Mixtape
+- ArcGIS / QGIS Documentation
+
 
