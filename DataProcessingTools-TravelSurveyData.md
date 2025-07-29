@@ -88,7 +88,7 @@ Optional: use staggered DiD (Sun & Abraham or Callaway & Sant’Anna)
 
 ---
 
-**Output Checklist**
+### Output Checklist
 | Output                             | Format                        |
 | ---------------------------------- | ----------------------------- |
 | Cleaned yearly files               | `.parquet` or `.csv`          |
