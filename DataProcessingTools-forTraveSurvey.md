@@ -63,7 +63,7 @@ This guide outlines the complete workflow and tools required to prepare and anal
 ```python
 combined = pd.concat([hts2000, hts2014, hts2019])
 combined.to_parquet("hts_trip_super.parquet")
-exit()
+```
 
 ---
 ### 5. Derive Analysis Units
