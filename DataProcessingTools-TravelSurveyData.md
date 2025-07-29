@@ -1,4 +1,4 @@
-# Spatial Difference-in-Differences Study: HTS Data Processing Pipeline
+# Spatial Difference-in-Differences Study: Household Travel Survey (HTS) Data Processing Pipeline
 
 This guide outlines the complete workflow and tools required to prepare and analyze the 2000, 2014, and 2019 Household Travel Surveys (HTS) for a Spatial Difference-in-Differences (DiD) evaluation of the Rea Vaya BRT system in Johannesburg.
 
