@@ -77,12 +77,11 @@ Zone	groupby(TAZ_ID, YEAR) + weighted means	Sum of HH/pop weights
 
 ### 6. Prepare for DiD Estimation
 python
-Copy
-Edit
+``
 df["POST"] = (df["YEAR"] >= 2014).astype(int)
 df["DID"] = df["TREAT_FLAG"] * df["POST"]
 Cluster: TAZ_ID, HHID
-
+``
 Plot trends: mode share, travel time, car ownership
 
 Optional: use staggered DiD (Sun & Abraham or Callaway & Sant’Anna)
@@ -90,15 +89,16 @@ Optional: use staggered DiD (Sun & Abraham or Callaway & Sant’Anna)
 ---
 
 **Output Checklist**
-Output	Format
-Cleaned yearly files	.parquet or .csv
-Merged trip-level superfile	hts_trip_super.parquet
-Aggregated person/household panels	.csv
-TAZ-level summaries	.csv
-DiD-ready panel	.csv, .dta, or .parquet
-Plots, maps	.png, .pdf
-Scripts	.py, .R, .ipynb, .do
-Documentation	README.md, .md, .pdf
+| Output                             | Format                        |
+| ---------------------------------- | ----------------------------- |
+| Cleaned yearly files               | `.parquet` or `.csv`          |
+| Merged trip-level superfile        | `hts_trip_super.parquet`      |
+| Aggregated person/household panels | `.csv`                        |
+| TAZ-level summaries                | `.csv`                        |
+| DiD-ready panel                    | `.csv`, `.dta`, or `.parquet` |
+| Plots, maps                        | `.png`, `.pdf`                |
+| Scripts                            | `.py`, `.R`, `.ipynb`, `.do`  |
+| Documentation                      | `README.md`, `.md`, `.pdf`    |
 
 ---
 
